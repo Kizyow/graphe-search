@@ -48,7 +48,7 @@ public class GrapheListe implements Graphe {
             String[] ligneSplit = line.split("\t");
             String depart = ligneSplit[0];
             String destination = ligneSplit[1];
-            int cout = Integer.parseInt(ligneSplit[2]);
+            double cout = Double.parseDouble(ligneSplit[2]);
 
             // ajout des noeuds et de l'arc au graphe à partir des informations de la ligne
             this.ajouterArc(depart, destination, cout);
@@ -161,8 +161,8 @@ public class GrapheListe implements Graphe {
             for (Arc arc : noeud.getAdj()) {
                 ch += temp + " " + arc.getDest() + " [label = " + arc.getCout() + "]\n";
             }
-            if(noeud.getAdj().isEmpty()){
-                ch += noeud.getNom() +"\n";
+            if (noeud.getAdj().isEmpty()) {
+                ch += noeud.getNom() + "\n";
             }
         }
 
