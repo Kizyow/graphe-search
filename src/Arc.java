@@ -1,3 +1,7 @@
+/**
+ * Une classe Arc permettant de représenter un arc dans un graphe
+ * partant d'un noeud vers un noeud destination avec un coût défini
+ */
 public class Arc {
 
     /**
