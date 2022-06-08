@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +18,47 @@ public class GrapheListe implements Graphe {
      */
     private List<Noeud> ensNoeuds;
 
+    /**
+     * Constructeur par défaut de GrapheListe
+     */
     public GrapheListe() {
         this.ensNom = new ArrayList<>();
         this.ensNoeuds = new ArrayList<>();
+    }
+
+    /**
+     * Constructeur de GrapheListe et chargement d'un graphe à partyir d'un fichier
+     *
+     * @param nomFichier Le nom du fichier contenant le graphe
+     * @throws IOException Une exception quand le fichier est mal lu
+     */
+    public GrapheListe(String nomFichier) throws IOException {
+        this.ensNom = new ArrayList<>();
+        this.ensNoeuds = new ArrayList<>();
+
+        // lecture du fichier
+        FileReader fileReader = new FileReader(nomFichier);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        // lecture de la ligne courante
+        String line = bufferedReader.readLine();
+
+        // tant qu'il y a encore une ligne a lire
+        while (line != null) {
+            String[] ligneSplit = line.split("\t");
+            String depart = ligneSplit[0];
+            String destination = ligneSplit[1];
+            int cout = Integer.parseInt(ligneSplit[2]);
+
+            // ajout des noeuds et de l'arc au graphe à partir des informations de la ligne
+            this.ajouterArc(depart, destination, cout);
+
+            line = bufferedReader.readLine();
+        }
+
+        // fermeture du flux
+        bufferedReader.close();
+
     }
 
     /**
@@ -91,32 +132,34 @@ public class GrapheListe implements Graphe {
 
     /**
      * retourne une chaine correspond a toute les liasons dans le graphe
+     *
      * @return une chaine
      */
     @Override
     public String toString() {
         String ch = "";
-        for(Noeud noeud : ensNoeuds){
+        for (Noeud noeud : ensNoeuds) {
             ch += noeud.getNom() + " -> ";
-            for(Arc arc : noeud.getAdj()){
-                ch += " "+arc.getDest()+"("+arc.getCout()+")";
+            for (Arc arc : noeud.getAdj()) {
+                ch += " " + arc.getDest() + "(" + arc.getCout() + ")";
             }
-            ch+="\n";
+            ch += "\n";
         }
         return ch;
     }
 
     /**
      * retourne une chaine correspond a toute les liasons dans le graphe sous la forme d'un Graphviz
+     *
      * @return une chaine
      */
     public String toGraphviz() {
         String ch = "digraph {\n\n";
-        for(Noeud noeud : ensNoeuds){
+        for (Noeud noeud : ensNoeuds) {
             String temp = "";
             temp += noeud.getNom() + " -> ";
-            for(Arc arc : noeud.getAdj()){
-                ch += temp+" "+arc.getDest()+" [label = "+arc.getCout()+"]\n";
+            for (Arc arc : noeud.getAdj()) {
+                ch += temp + " " + arc.getDest() + " [label = " + arc.getCout() + "]\n";
             }
         }
 
