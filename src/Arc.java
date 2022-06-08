@@ -15,8 +15,9 @@ public class Arc {
 
     /**
      * Constructeur permettant de créer un arc
+     *
      * @param noeudDest Le noeud de destination de l'arc
-     * @param arcCout Le coût/poids de l'arc
+     * @param arcCout   Le coût/poids de l'arc
      */
     public Arc(String noeudDest, double arcCout) {
         this.dest = noeudDest;
