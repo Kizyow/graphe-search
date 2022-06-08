@@ -45,12 +45,14 @@ public class GrapheListe implements Graphe {
         if (noeudDep == null) {
             noeudDep = new Noeud(depart);
             ensNoeuds.add(noeudDep);
+            ensNom.add(depart);
         }
 
         // si le noeud de destination n'existe pas, le créer et l'ajouter au graphe
         if (noeudDest == null) {
             noeudDest = new Noeud(destination);
             ensNoeuds.add(noeudDest);
+            ensNom.add(destination);
         }
 
         // ajouter l'arc partant du noeud de départ vers le noeud de destination pour un cout
