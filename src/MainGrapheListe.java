@@ -17,6 +17,8 @@ public class MainGrapheListe {
         grapheListe.ajouterArc("D", "C", 10);
         grapheListe.ajouterArc("D", "B", 23);
         grapheListe.ajouterArc("E", "D", 43);
+        System.out.println(grapheListe.toString());
+        System.out.println(grapheListe.toGraphviz());
 
     }
 

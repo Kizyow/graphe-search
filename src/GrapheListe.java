@@ -87,13 +87,38 @@ public class GrapheListe implements Graphe {
         return noeudSelect.getAdj();
     }
 
+    /**
+     * retourne une chaine correspond a toute les liasons dans le graphe
+     * @return une chaine
+     */
     @Override
     public String toString() {
         String ch = "";
         for(Noeud noeud : ensNoeuds){
             ch += noeud.getNom() + " -> ";
-            for(noeud.getAdj())
+            for(Arc arc : noeud.getAdj()){
+                ch += " "+arc.getDest()+"("+arc.getCout()+")";
+            }
+            ch+="\n";
         }
+        return ch;
+    }
+
+    /**
+     * retourne une chaine correspond a toute les liasons dans le graphe sous la forme d'un Graphviz
+     * @return une chaine
+     */
+    public String toGraphviz() {
+        String ch = "digraph {\n\n";
+        for(Noeud noeud : ensNoeuds){
+            String temp = "";
+            temp += noeud.getNom() + " -> ";
+            for(Arc arc : noeud.getAdj()){
+                ch += temp+" "+arc.getDest()+" [label = "+arc.getCout()+"]\n";
+            }
+        }
+
+        ch += "\n}";
         return ch;
     }
 }
