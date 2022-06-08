@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,6 +8,11 @@ public class GrapheListe implements Graphe {
 
     private List<String> ensNom;
     private List<Noeud> ensNoeuds;
+
+    public GrapheListe() {
+        this.ensNom = new ArrayList<>();
+        this.ensNoeuds = new ArrayList<>();
+    }
 
     /**
      * Méthode permettant d'ajouter des noeuds et des arcs au graphe
