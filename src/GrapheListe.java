@@ -6,7 +6,13 @@ import java.util.List;
  */
 public class GrapheListe implements Graphe {
 
+    /**
+     * Attribut représentant la liste des noms de noeuds
+     */
     private List<String> ensNom;
+    /**
+     * Attribut représentant la liste des Noeud
+     */
     private List<Noeud> ensNoeuds;
 
     public GrapheListe() {
@@ -70,7 +76,15 @@ public class GrapheListe implements Graphe {
      */
     @Override
     public List<Arc> suivants(String n) {
-        return null;
+        Noeud noeudSelect = new Noeud(n);
+
+        for (Noeud noeud : ensNoeuds) {
+            if (noeud.equals(noeudSelect)) {
+                noeudSelect = noeud;
+            }
+        }
+
+        return noeudSelect.getAdj();
     }
 
     @Override
