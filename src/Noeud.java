@@ -9,7 +9,7 @@ public class Noeud {
 
     /**
      * constructeur noeud
-     * @param nom du nom
+     * @param nom nom du noeud
      */
     public Noeud(String nom){
         this.nom = nom;
@@ -18,7 +18,7 @@ public class Noeud {
 
     /**
      * redefinition de la methode equals
-     * @param n
+     * @param n objet noeud
      * @return vrai si le nom est identique a l'objet passe en param
      */
     public boolean equals(Noeud n){
@@ -35,7 +35,7 @@ public class Noeud {
     /**
      * ajoute un arc
      * @param destination nom du noeud
-     * @param cout pour acceder au noeud
+     * @param cout cout pour acceder au noeud
      */
     public void ajouterArc(String destination, double cout){
         adj.add(new Arc(destination, cout));
