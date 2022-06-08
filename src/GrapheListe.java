@@ -73,4 +73,13 @@ public class GrapheListe implements Graphe {
         return null;
     }
 
+    @Override
+    public String toString() {
+        String ch = "";
+        for(Noeud noeud : ensNoeuds){
+            ch += noeud.getNom() + " -> ";
+            for(noeud.getAdj())
+        }
+        return ch;
+    }
 }
