@@ -161,6 +161,9 @@ public class GrapheListe implements Graphe {
             for (Arc arc : noeud.getAdj()) {
                 ch += temp + " " + arc.getDest() + " [label = " + arc.getCout() + "]\n";
             }
+            if(noeud.getAdj().isEmpty()){
+                ch += noeud.getNom() +"\n";
+            }
         }
 
         ch += "\n}";
