@@ -22,6 +22,11 @@ public class Arc {
     public Arc(String noeudDest, double arcCout) {
         this.dest = noeudDest;
         this.cout = arcCout;
+
+        if (arcCout < 0) {
+            this.cout = 0;
+        }
+
     }
 
     /**

@@ -34,4 +34,10 @@ public class MainGrapheListe {
 
     }
 
+    public void pointFixe(Graphe graphe, Noeud depart){
+
+
+
+    }
+
 }
