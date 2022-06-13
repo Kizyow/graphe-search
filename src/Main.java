@@ -23,6 +23,10 @@ public class Main {
         System.out.println(valeur);
         System.out.println(valeur.calculerChemin("E"));
 
+        Dijkstra dijkstra = new Dijkstra();
+        Valeur valeur1 = dijkstra.resoudre(grapheListe, "A");
+        System.out.println(valeur1);
+
     }
 
 }

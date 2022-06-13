@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -32,16 +33,17 @@ public class Dijkstra {
      */
 
     /**
-     * Algorithme du point fixe
+     * Algorithme de Dijkstra
      *
-     * @param g      Graphe
+     * @param g  Graphe
      * @param depart Noeud de départ
      * @return Les valeurs
      */
     public Valeur resoudre(Graphe g, String depart) {
 
         Valeur valeur = new Valeur();
-        File file = new FileContigue();
+        List<String> liste = new ArrayList<>();
+
 
         for (String gNom : g.listeNoeuds()) {
             if (gNom.equalsIgnoreCase(depart)) {
@@ -50,17 +52,36 @@ public class Dijkstra {
             } else {
                 valeur.setValeur(gNom, Double.MAX_VALUE);
             }
-            file.adjfil(gNom);
+            liste.add(gNom);
 
         }
 
-        while(!file.estVideFile()){
+        while(!liste.isEmpty()){
 
             int u = 0;
-            file.adjfil(u);
+            String petitNoeud = liste.get(0);
+            for(String noeudNom : liste){
+                if(valeur.getValeur(noeudNom) < valeur.getValeur(petitNoeud)){
+                    petitNoeud = noeudNom;
+                }
+            }
+            liste.remove(petitNoeud);
+
+            List<Arc> listeArc =  g.suivants(petitNoeud);
+
+            for(Arc arc : listeArc){
+                double D = valeur.getValeur(petitNoeud) + arc.getCout();
+
+                if(D < valeur.getValeur(arc.getDest())){
+                    valeur.setValeur(arc.getDest(), D);
+                    valeur.setParent(arc.getDest(), petitNoeud);
+                }
+            }
 
 
         }
+
+        return valeur;
 
     }
 
