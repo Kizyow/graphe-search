@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.LinkedBlockingDeque;
 
-public class Dijkstra {
+public class Dijkstra implements Algorithme {
 
     /**
      * Entrees :
@@ -35,7 +33,7 @@ public class Dijkstra {
     /**
      * Algorithme de Dijkstra
      *
-     * @param g  Graphe
+     * @param g      Graphe
      * @param depart Noeud de départ
      * @return Les valeurs
      */
@@ -43,7 +41,6 @@ public class Dijkstra {
 
         Valeur valeur = new Valeur();
         List<String> liste = new ArrayList<>();
-
 
         for (String gNom : g.listeNoeuds()) {
             if (gNom.equalsIgnoreCase(depart)) {
@@ -56,29 +53,34 @@ public class Dijkstra {
 
         }
 
-        while(!liste.isEmpty()){
+        while (!liste.isEmpty()) {
 
             String petitNoeud = liste.get(0);
-            for(String noeudNom : liste){
-                if(valeur.getValeur(noeudNom) < valeur.getValeur(petitNoeud)){
+
+            for (String noeudNom : liste) {
+                if (valeur.getValeur(noeudNom) < valeur.getValeur(petitNoeud)) {
                     petitNoeud = noeudNom;
                 }
             }
+
             liste.remove(petitNoeud);
 
-            List<Arc> listeArc =  g.suivants(petitNoeud);
+            List<Arc> listeArc = g.suivants(petitNoeud);
+            for (Arc arc : listeArc) {
 
-            for(Arc arc : listeArc){
                 double D = valeur.getValeur(petitNoeud) + arc.getCout();
 
-                if(D < valeur.getValeur(arc.getDest())){
+                if (D < valeur.getValeur(arc.getDest())) {
                     valeur.setValeur(arc.getDest(), D);
                     valeur.setParent(arc.getDest(), petitNoeud);
                 }
-            }
 
+<<<<<<< HEAD
             //System.out.println("ite Dijkstra -> : " +valeur);
 
+=======
+            }
+>>>>>>> 23254b0ade4b24e86e397bdb372160ecb12b2fcd
 
         }
 

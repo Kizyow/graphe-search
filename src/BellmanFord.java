@@ -3,7 +3,7 @@ import java.util.List;
 /**
  * Classe de l'algorithme du point fixe
  */
-public class BellmanFord {
+public class BellmanFord implements Algorithme {
 
     /*
     fonction pointFixe(g : Graphe InOut, depart : Noeud)
