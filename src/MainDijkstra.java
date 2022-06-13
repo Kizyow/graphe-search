@@ -1,22 +1,25 @@
+import java.io.IOException;
+import java.util.List;
+
 public class MainDijkstra {
 
     public static void main(String[] args) {
 
-        GrapheListe grapheListe = new GrapheListe();
-        grapheListe.ajouterArc("A", "B", 1);
-        grapheListe.ajouterArc("A", "C", 5);
-        grapheListe.ajouterArc("B", "C", 3);
-        grapheListe.ajouterArc("B", "D", 1);
-        grapheListe.ajouterArc("C", "E", 3);
-        grapheListe.ajouterArc("D", "C", 1);
-        grapheListe.ajouterArc("D", "E", 9);
-        System.out.println(grapheListe.toString());
-        System.out.println(grapheListe.toGraphviz());
+        try {
+            GrapheListe graphe = new GrapheListe("exemples/Graphe25.txt");
+            System.out.println(graphe.toString());
+            System.out.println(graphe.toGraphviz());
 
-        Dijkstra dijkstra = new Dijkstra();
-        Valeur valeur = dijkstra.resoudre(grapheListe, "A");
-        System.out.println(valeur);
-        System.out.println(valeur.calculerChemin("E"));
+            Algorithme algorithme = new Dijkstra();
+            Valeur solution = algorithme.resoudre(graphe, "1");
+            System.out.println(solution);
+
+            List<String> chemin = solution.calculerChemin("14");
+            System.out.println(chemin);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
