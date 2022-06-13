@@ -58,7 +58,6 @@ public class Dijkstra {
 
         while(!liste.isEmpty()){
 
-            int u = 0;
             String petitNoeud = liste.get(0);
             for(String noeudNom : liste){
                 if(valeur.getValeur(noeudNom) < valeur.getValeur(petitNoeud)){
@@ -77,6 +76,8 @@ public class Dijkstra {
                     valeur.setParent(arc.getDest(), petitNoeud);
                 }
             }
+
+            //System.out.println("ite Dijkstra -> : " +valeur);
 
 
         }

@@ -69,6 +69,8 @@ public class BellmanFord {
 
             }
 
+            //System.out.println("ite Bellaman -> : " + valeur);
+
         }
 
         // retourne valeur
