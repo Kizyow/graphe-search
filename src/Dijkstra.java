@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dijkstra {
+public class Dijkstra implements Algorithme {
 
     /**
      * Entrees :
