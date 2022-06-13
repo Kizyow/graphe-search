@@ -1,10 +1,5 @@
-public class Main {
+public class MainDijkstra {
 
-    /**
-     * Le main pour tester l'algorithme du point fixe
-     *
-     * @param args
-     */
     public static void main(String[] args) {
 
         GrapheListe grapheListe = new GrapheListe();
@@ -18,8 +13,8 @@ public class Main {
         System.out.println(grapheListe.toString());
         System.out.println(grapheListe.toGraphviz());
 
-        BellmanFord bellmanFord = new BellmanFord();
-        Valeur valeur = bellmanFord.resoudre(grapheListe, "A");
+        Dijkstra dijkstra = new Dijkstra();
+        Valeur valeur = dijkstra.resoudre(grapheListe, "A");
         System.out.println(valeur);
         System.out.println(valeur.calculerChemin("E"));
 
