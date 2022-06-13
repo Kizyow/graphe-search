@@ -21,6 +21,7 @@ public class Main {
         BellmanFord bellmanFord = new BellmanFord();
         Valeur valeur = bellmanFord.resoudre(grapheListe, "A");
         System.out.println(valeur);
+        System.out.println(valeur.calculerChemin("E"));
 
     }
 
