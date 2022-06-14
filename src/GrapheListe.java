@@ -208,6 +208,7 @@ public class GrapheListe implements Graphe {
             }
 
         }
+        canGenerateRandom = false;
 
     }
 }
