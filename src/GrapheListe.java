@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Une classe GrapheListe permettant de représenter les données associé à un graphe
@@ -17,6 +18,8 @@ public class GrapheListe implements Graphe {
      * Attribut représentant la liste des Noeud
      */
     private List<Noeud> ensNoeuds;
+    private int nombreNoeuds = 0;
+    private boolean canGenerateRandom = false;
 
     /**
      * Constructeur par défaut de GrapheListe
@@ -24,6 +27,17 @@ public class GrapheListe implements Graphe {
     public GrapheListe() {
         this.ensNom = new ArrayList<>();
         this.ensNoeuds = new ArrayList<>();
+    }
+
+    /**
+     * Constructeur avec un nombre de noeud donnees
+     */
+    public GrapheListe(int nombreDeNoeuds) {
+        this.ensNom = new ArrayList<>();
+        this.ensNoeuds = new ArrayList<>();
+        this.nombreNoeuds = nombreDeNoeuds;
+        this.canGenerateRandom = true;
+        genererGraphe();
     }
 
     /**
@@ -82,6 +96,8 @@ public class GrapheListe implements Graphe {
             }
         }
 
+
+
         // si le noeud de départ n'existe pas, le créer et l'ajouter au graphe
         if (noeudDep == null) {
             noeudDep = new Noeud(depart);
@@ -94,6 +110,13 @@ public class GrapheListe implements Graphe {
             noeudDest = new Noeud(destination);
             ensNoeuds.add(noeudDest);
             ensNom.add(destination);
+        }
+
+        //si l'arc existe deja, rien faire
+        for(Arc arc : suivants(destination)){
+            if(arc.getDest().equalsIgnoreCase(depart)){
+                return;
+            }
         }
 
         // ajouter l'arc partant du noeud de départ vers le noeud de destination pour un cout
@@ -168,5 +191,23 @@ public class GrapheListe implements Graphe {
 
         ch += "\n}";
         return ch;
+    }
+
+    /**
+     * genere un graphe avec un nombre de noeuds donnees
+     */
+    public void genererGraphe(){
+        if(canGenerateRandom){
+            Random random = new Random();
+            ajouterArc(0+"", 1+"", random.nextInt(100));
+            for(int i = 1; i < nombreNoeuds; i++){
+                ajouterArc(i+"", random.nextInt(ensNoeuds.size())+"", random.nextInt(100));
+                for(int y =0; y < random.nextInt(3); y++){
+                    ajouterArc(i+"", random.nextInt(ensNoeuds.size())+"", random.nextInt(100));
+                }
+            }
+
+        }
+
     }
 }
