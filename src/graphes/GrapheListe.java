@@ -20,8 +20,6 @@ public class GrapheListe implements Graphe {
      * Attribut représentant la liste des graphes.Noeud
      */
     private List<Noeud> ensNoeuds;
-    private int nombreNoeuds = 0;
-    private boolean canGenerateRandom = false;
 
     /**
      * Constructeur par défaut de graphes.GrapheListe
@@ -29,17 +27,6 @@ public class GrapheListe implements Graphe {
     public GrapheListe() {
         this.ensNom = new ArrayList<>();
         this.ensNoeuds = new ArrayList<>();
-    }
-
-    /**
-     * Constructeur avec un nombre de noeud donnees
-     */
-    public GrapheListe(int nombreDeNoeuds) {
-        this.ensNom = new ArrayList<>();
-        this.ensNoeuds = new ArrayList<>();
-        this.nombreNoeuds = nombreDeNoeuds;
-        this.canGenerateRandom = true;
-        genererGraphe();
     }
 
     /**
@@ -196,21 +183,29 @@ public class GrapheListe implements Graphe {
     }
 
     /**
-     * genere un graphe avec un nombre de noeuds donnees
+     * Permet de générer un graphe aleatoirement avec n noeuds donnés
+     * @param taille Le nombre de noeuds dans le graphe
+     * @return GrapheListe
      */
-    public void genererGraphe(){
-        if(canGenerateRandom){
-            Random random = new Random();
-            ajouterArc(0+"", 1+"", random.nextInt(100));
-            for(int i = 1; i < nombreNoeuds; i++){
-                ajouterArc(i+"", random.nextInt(ensNoeuds.size())+"", random.nextInt(100));
-                for(int y =0; y < nombreNoeuds; y++){
-                    ajouterArc(i+"", random.nextInt(ensNoeuds.size())+"", random.nextInt(100));
-                }
-            }
+    public static GrapheListe genererGraphe(int taille) {
 
+        GrapheListe grapheListe = new GrapheListe();
+        Random random = new Random();
+
+        for (int i = 1; i < taille; i++) {
+            grapheListe.ajouterArc(String.valueOf(i), String.valueOf(i + 1), random.nextInt(100)+1);
         }
-        canGenerateRandom = false;
+
+        grapheListe.ajouterArc(String.valueOf(taille), "1", random.nextInt(100)+1);
+
+        for(int i = 1; i <= taille; i++){
+            int dep = random.nextInt(taille)+1;
+            int dest = random.nextInt(taille)+1;
+            grapheListe.ajouterArc(String.valueOf(dep), String.valueOf(dest), random.nextInt(100)+1);
+        }
+
+        return grapheListe;
 
     }
+
 }

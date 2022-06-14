@@ -57,29 +57,48 @@ public class Experimentation {
          * en millisecondes
          */
 
-        for (int i = 0; i <= 1000; i += 100) {
+        int TAILLE_MAX = 1000;
+        int PAS = 100;
+
+        int NB_ITERATION = TAILLE_MAX / PAS;
+        long sommeBellman = 0;
+        long sommeDijsktra = 0;
+
+        for (int i = 0; i <= TAILLE_MAX; i += PAS) {
 
             long time = System.nanoTime();
-            GrapheListe grapheAleatoire = new GrapheListe(i);
+            GrapheListe grapheAleatoire = GrapheListe.genererGraphe(i);
             time = System.nanoTime() - time;
             System.out.println("Temps de génération d'un graphe de taille " + i + ": " + (time / 1e6) + "ms");
 
             time = System.nanoTime();
             BellmanFord bellmanFord = new BellmanFord();
-            bellmanFord.resoudre(grapheAleatoire, "1");
+            Valeur valeur = bellmanFord.resoudre(grapheAleatoire, "1");
             time = System.nanoTime() - time;
+            sommeBellman += time;
 
             System.out.println("Temps d'exécution de l'algorithme du point fixe: " + (time / 1e6) + "ms");
+            System.out.println(valeur.calculerChemin(String.valueOf(i)));
 
             time = System.nanoTime();
             Dijkstra dijkstra = new Dijkstra();
-            dijkstra.resoudre(grapheAleatoire, "1");
+            valeur = dijkstra.resoudre(grapheAleatoire, "1");
             time = System.nanoTime() - time;
+            sommeDijsktra += time;
 
             System.out.println("Temps d'exécution de l'algorithme de Dijsktra: " + (time / 1e6) + "ms");
+            System.out.println(valeur.calculerChemin(String.valueOf(i)));
             System.out.println("=====================================================================================");
 
         }
+
+        System.out.println("=====================================================================================");
+        System.out.println("Noeuds maximum: " + TAILLE_MAX);
+        System.out.println("Pas entre chaque itération: " + PAS);
+        System.out.println("Nombre itérations: " + NB_ITERATION);
+        System.out.println("Moyenne Bellman-Ford: " + (sommeBellman / NB_ITERATION) / 1e6 + "ms");
+        System.out.println("Moyenne Dijsktra: " + (sommeDijsktra / NB_ITERATION) / 1e6 + "ms");
+        System.out.println("=====================================================================================");
 
     }
 
