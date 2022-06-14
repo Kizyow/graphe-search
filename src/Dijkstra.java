@@ -53,6 +53,8 @@ public class Dijkstra implements Algorithme {
 
         }
 
+//        System.out.println("Dijsktra - Initialisation -> : \n" + valeur);
+
         while (!liste.isEmpty()) {
 
             String petitNoeud = liste.get(0);
@@ -75,12 +77,9 @@ public class Dijkstra implements Algorithme {
                     valeur.setParent(arc.getDest(), petitNoeud);
                 }
 
-<<<<<<< HEAD
-            //System.out.println("ite Dijkstra -> : " +valeur);
+//                System.out.println("Dijsktra - Noeud " + petitNoeud + " -> : \n" + valeur);
 
-=======
             }
->>>>>>> 23254b0ade4b24e86e397bdb372160ecb12b2fcd
 
         }
 

@@ -48,8 +48,11 @@ public class BellmanFord implements Algorithme {
             }
         }
 
+//        System.out.println("BellmanFord - Initialisation -> : \n" + valeur);
+
         // étapes
         String valeurPrec = "";
+//        int i = 1;
         while (!valeurPrec.equalsIgnoreCase(valeur.toString())) {
 
             valeurPrec = valeur.toString();
@@ -69,7 +72,7 @@ public class BellmanFord implements Algorithme {
 
             }
 
-            //System.out.println("ite Bellaman -> : " + valeur);
+//            System.out.println("BellmanFord - Étape " + (i++) + " -> : \n" + valeur);
 
         }
 
