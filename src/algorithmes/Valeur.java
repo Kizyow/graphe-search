@@ -1,3 +1,5 @@
+package algorithmes;
+
 import java.util.*;
 
 /**

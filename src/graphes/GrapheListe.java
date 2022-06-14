@@ -1,3 +1,5 @@
+package graphes;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -6,7 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Une classe GrapheListe permettant de représenter les données associé à un graphe
+ * Une classe graphes.GrapheListe permettant de représenter les données associé à un graphe
  */
 public class GrapheListe implements Graphe {
 
@@ -15,14 +17,14 @@ public class GrapheListe implements Graphe {
      */
     private List<String> ensNom;
     /**
-     * Attribut représentant la liste des Noeud
+     * Attribut représentant la liste des graphes.Noeud
      */
     private List<Noeud> ensNoeuds;
     private int nombreNoeuds = 0;
     private boolean canGenerateRandom = false;
 
     /**
-     * Constructeur par défaut de GrapheListe
+     * Constructeur par défaut de graphes.GrapheListe
      */
     public GrapheListe() {
         this.ensNom = new ArrayList<>();
@@ -41,7 +43,7 @@ public class GrapheListe implements Graphe {
     }
 
     /**
-     * Constructeur de GrapheListe et chargement d'un graphe à partyir d'un fichier
+     * Constructeur de graphes.GrapheListe et chargement d'un graphe à partyir d'un fichier
      *
      * @param nomFichier Le nom du fichier contenant le graphe
      * @throws IOException Une exception quand le fichier est mal lu
@@ -113,8 +115,8 @@ public class GrapheListe implements Graphe {
         }
 
         //si l'arc existe deja, rien faire
-        for(Arc arc : suivants(destination)){
-            if(arc.getDest().equalsIgnoreCase(depart)){
+        for(Arc arc : suivants(depart)){
+            if(arc.getDest().equalsIgnoreCase(destination)){
                 return;
             }
         }
@@ -202,7 +204,7 @@ public class GrapheListe implements Graphe {
             ajouterArc(0+"", 1+"", random.nextInt(100));
             for(int i = 1; i < nombreNoeuds; i++){
                 ajouterArc(i+"", random.nextInt(ensNoeuds.size())+"", random.nextInt(100));
-                for(int y =0; y < random.nextInt(3); y++){
+                for(int y =0; y < nombreNoeuds; y++){
                     ajouterArc(i+"", random.nextInt(ensNoeuds.size())+"", random.nextInt(100));
                 }
             }

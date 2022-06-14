@@ -1,3 +1,10 @@
+package algorithmes;
+
+import algorithmes.Algorithme;
+import algorithmes.Dijkstra;
+import algorithmes.Valeur;
+import graphes.GrapheListe;
+
 import java.io.IOException;
 import java.util.List;
 

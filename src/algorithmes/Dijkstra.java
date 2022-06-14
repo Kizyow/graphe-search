@@ -1,3 +1,8 @@
+package algorithmes;
+
+import graphes.Arc;
+import graphes.Graphe;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,10 +36,10 @@ public class Dijkstra implements Algorithme {
      */
 
     /**
-     * Algorithme de Dijkstra
+     * algorithmes.Algorithme de algorithmes.Dijkstra
      *
-     * @param g      Graphe
-     * @param depart Noeud de départ
+     * @param g      graphes.Graphe
+     * @param depart graphes.Noeud de départ
      * @return Les valeurs
      */
     public Valeur resoudre(Graphe g, String depart) {
@@ -77,7 +82,7 @@ public class Dijkstra implements Algorithme {
                     valeur.setParent(arc.getDest(), petitNoeud);
                 }
 
-//                System.out.println("Dijsktra - Noeud " + petitNoeud + " -> : \n" + valeur);
+//                System.out.println("Dijsktra - graphes.Noeud " + petitNoeud + " -> : \n" + valeur);
 
             }
 

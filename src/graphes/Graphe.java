@@ -1,7 +1,9 @@
+package graphes;
+
 import java.util.List;
 
 /**
- * Une interface Graphe (TAD)
+ * Une interface graphes.Graphe (TAD)
  */
 public interface Graphe {
 

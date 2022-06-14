@@ -1,8 +1,12 @@
 package laby;
 
+import graphes.GrapheListe;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * classe labyrinthe. represente un labyrinthe avec
@@ -127,9 +131,9 @@ public class Labyrinthe {
      *
      * @param action une des actions possibles
      */
-    public int[] deplacerPerso(int i, int j,String action) {
+    public int[] deplacerPerso(int i, int j, String action) {
         // case courante
-        int[] courante = {i,j};
+        int[] courante = {i, j};
 
         // calcule case suivante
         int[] suivante = getSuivant(courante[0], courante[1], action);
@@ -176,6 +180,7 @@ public class Labyrinthe {
 
     /**
      * return mur en (i,j)
+     *
      * @param x
      * @param y
      * @return
@@ -184,4 +189,35 @@ public class Labyrinthe {
         // utilise le tableau de boolean
         return this.murs[x][y];
     }
+
+    public GrapheListe genererGraphe() {
+
+        GrapheListe grapheListe = new GrapheListe();
+        for (int i = 1; i < murs.length-1; i++) {
+            for (int j = 1; j < murs[i].length-1; j++) {
+                String depart = "(" + i + "," + j + ")";
+
+                List<int[]> suivants = new ArrayList<>();
+                suivants.add(deplacerPerso(i, j, HAUT));
+                suivants.add(deplacerPerso(i, j, BAS));
+                suivants.add(deplacerPerso(i, j, GAUCHE));
+                suivants.add(deplacerPerso(i, j, DROITE));
+
+                for (int[] dest : suivants) {
+                    String d = "(" + dest[0] + "," + dest[1] + ")";
+                    if (!d.equalsIgnoreCase(depart)) {
+                        grapheListe.ajouterArc(depart, d, 1);
+                        grapheListe.ajouterArc(d, depart, 1);
+                    }
+
+                }
+
+            }
+
+        }
+
+        return grapheListe;
+
+    }
+
 }

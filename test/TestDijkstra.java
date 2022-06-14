@@ -1,5 +1,8 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import algorithmes.Dijkstra;
+import algorithmes.Valeur;
+import graphes.GrapheListe;
 import org.junit.jupiter.api.Test;
 
 public class TestDijkstra {

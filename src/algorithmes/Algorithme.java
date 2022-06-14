@@ -1,5 +1,9 @@
+package algorithmes;
+
+import graphes.Graphe;
+
 /**
- * Une interface Algorithme afin d'avoir un Strategy Pattern
+ * Une interface algorithmes.Algorithme afin d'avoir un Strategy Pattern
  */
 public interface Algorithme {
 

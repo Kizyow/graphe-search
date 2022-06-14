@@ -1,20 +1,22 @@
+package graphes;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Noeud {
 
     /**
-     * Attribut représentant le nom du Noeud
+     * Attribut représentant le nom du graphes.Noeud
      */
     private String nom;
     /**
-     * Attribut représentant la liste d'adjacente du Noeud
+     * Attribut représentant la liste d'adjacente du graphes.Noeud
      */
     private List<Arc> adj;
 
 
     /**
-     * Constructeur du Noeud
+     * Constructeur du graphes.Noeud
      *
      * @param nom nom du noeud
      */
@@ -43,7 +45,7 @@ public class Noeud {
     }
 
     /**
-     * Méthode permettant de récupérer la liste d'adjacente du Noeud
+     * Méthode permettant de récupérer la liste d'adjacente du graphes.Noeud
      *
      * @return la liste d'adjacente sous forme d'arcs
      */

@@ -1,6 +1,6 @@
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
+package graphes;
+
+import graphes.GrapheListe;
 
 /**
  * La classe MainGraphe
@@ -15,7 +15,7 @@ public class MainGrapheListe {
      */
     public static void main(String[] args) {
 
-//        GrapheListe grapheListe = new GrapheListe();
+//        graphes.GrapheListe grapheListe = new graphes.GrapheListe();
 //        grapheListe.ajouterArc("A", "B", 12);
 //        grapheListe.ajouterArc("A", "D", 87);
 //        grapheListe.ajouterArc("B", "E", 11);
@@ -27,7 +27,7 @@ public class MainGrapheListe {
 //        System.out.println(grapheListe.toGraphviz());
 //
 //        try {
-//            GrapheListe grapheListeFichier = new GrapheListe("exemples/Graphe1.txt");
+//            graphes.GrapheListe grapheListeFichier = new graphes.GrapheListe("exemples/Graphe1.txt");
 //            System.out.println(grapheListeFichier.toString());
 //            System.out.println(grapheListeFichier.toGraphviz());
 //        } catch (IOException e) {
