@@ -138,6 +138,11 @@ public class Labyrinthe {
         // calcule case suivante
         int[] suivante = getSuivant(courante[0], courante[1], action);
 
+        // si les nouvelles coordonnees sont en dehors du labyrinthe, alors on envoie pas les nouvelles coord
+        if (suivante[0] < 0 || suivante[1] < 0 || suivante[0] >= murs.length || suivante[1] >= murs[i].length) {
+            return courante;
+        }
+
         // si c'est pas un mur, on effectue le deplacement
         if (!this.murs[suivante[0]][suivante[1]]) {
             // on met a jour personnage
@@ -193,9 +198,15 @@ public class Labyrinthe {
     public GrapheListe genererGraphe() {
 
         GrapheListe grapheListe = new GrapheListe();
-        for (int i = 1; i < murs.length-1; i++) {
-            for (int j = 1; j < murs[i].length-1; j++) {
-                String depart = "(" + i + "," + j + ")";
+        for (int i = 0; i < murs.length; i++) {
+            for (int j = 0; j < murs[i].length; j++) {
+
+                // si le noeud est un mur, on saute un tour
+                if (this.getMur(i, j)) {
+                    continue;
+                }
+
+                String depart = i + "," + j;
 
                 List<int[]> suivants = new ArrayList<>();
                 suivants.add(deplacerPerso(i, j, HAUT));
@@ -204,7 +215,7 @@ public class Labyrinthe {
                 suivants.add(deplacerPerso(i, j, DROITE));
 
                 for (int[] dest : suivants) {
-                    String d = "(" + dest[0] + "," + dest[1] + ")";
+                    String d = dest[0] + "," + dest[1];
                     if (!d.equalsIgnoreCase(depart)) {
                         grapheListe.ajouterArc(depart, d, 1);
                         grapheListe.ajouterArc(d, depart, 1);
