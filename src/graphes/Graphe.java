@@ -3,7 +3,7 @@ package graphes;
 import java.util.List;
 
 /**
- * Une interface graphes.Graphe (TAD)
+ * Une interface Graphe (TAD)
  */
 public interface Graphe {
 

@@ -15,7 +15,8 @@ public class MainGrapheListe {
      */
     public static void main(String[] args) {
 
-        graphes.GrapheListe grapheListe = new graphes.GrapheListe();
+        // graphe represente dans la figure 1
+        GrapheListe grapheListe = new GrapheListe();
         grapheListe.ajouterArc("A", "B", 12);
         grapheListe.ajouterArc("A", "D", 87);
         grapheListe.ajouterArc("B", "E", 11);
@@ -26,19 +27,19 @@ public class MainGrapheListe {
         System.out.println(grapheListe.toString());
         System.out.println(grapheListe.toGraphviz());
 
+        // graphe cree a partir d'un fichier texte
         try {
-            graphes.GrapheListe grapheListeFichier = new GrapheListe("exemples/Graphe1.txt");
+            GrapheListe grapheListeFichier = new GrapheListe("exemples/Graphe1.txt");
             System.out.println(grapheListeFichier.toString());
             System.out.println(grapheListeFichier.toGraphviz());
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-
-        //generation d'un graphe aleatoire avec 100 noeuds
-        GrapheListe grapheListe2 = GrapheListe.genererGraphe(100);
-        System.out.println(grapheListe2.toString());
-        System.out.println(grapheListe2.toGraphviz());
+        // generation d'un graphe aleatoire avec 100 noeuds
+        GrapheListe grapheListeAleatoire = GrapheListe.genererGraphe(5);
+        System.out.println(grapheListeAleatoire.toString());
+        System.out.println(grapheListeAleatoire.toGraphviz());
 
     }
 

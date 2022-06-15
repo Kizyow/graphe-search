@@ -11,7 +11,7 @@ import java.util.List;
 public class BellmanFord implements Algorithme {
 
     /*
-    fonction pointFixe(g : graphes.Graphe InOut, depart : graphes.Noeud)
+    fonction pointFixe(g : Graphe InOut, depart : Noeud)
     début
         Pour x dans g faire
             L(X) <- +inf
@@ -32,10 +32,10 @@ public class BellmanFord implements Algorithme {
      */
 
     /**
-     * algorithmes.Algorithme du point fixe
+     * Algorithme du point fixe
      *
-     * @param g      graphes.Graphe
-     * @param depart graphes.Noeud de départ
+     * @param g      Graphe
+     * @param depart Noeud de départ
      * @return Les valeurs
      */
     public Valeur resoudre(Graphe g, String depart) {
@@ -53,11 +53,11 @@ public class BellmanFord implements Algorithme {
             }
         }
 
-//        System.out.println("algorithmes.BellmanFord - Initialisation -> : \n" + valeur);
+//        System.out.println("BellmanFord - Initialisation -> : \n" + valeur);
 
-        // étapes
+        // étapes et tant que le point fixe n'a pas été trouvé, on continue
         String valeurPrec = "";
-//        int i = 1;
+//        int nbIteration = 1;
         while (!valeurPrec.equalsIgnoreCase(valeur.toString())) {
 
             valeurPrec = valeur.toString();
@@ -77,7 +77,7 @@ public class BellmanFord implements Algorithme {
 
             }
 
-//            System.out.println("algorithmes.BellmanFord - Étape " + (i++) + " -> : \n" + valeur);
+//            System.out.println("BellmanFord - Étape " + (nbIteration++) + " -> : \n" + valeur);
 
         }
 

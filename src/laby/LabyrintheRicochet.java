@@ -13,7 +13,7 @@ import java.util.List;
  * <ul> des murs </ul>
  * <ul> un personnage (x,y) </ul>
  */
-public class Labyrinthe {
+public class LabyrintheRicochet {
 
     /**
      * Constantes char
@@ -76,7 +76,7 @@ public class Labyrinthe {
      * @return labyrinthe cree
      * @throws IOException probleme a la lecture / ouverture
      */
-    public Labyrinthe(String nom) throws IOException {
+    public LabyrintheRicochet(String nom) throws IOException {
         // ouvrir fichier
         FileReader fichier = new FileReader(nom);
         BufferedReader bfRead = new BufferedReader(fichier);
@@ -126,7 +126,7 @@ public class Labyrinthe {
 
 
     /**
-     * deplace le personnage en fonction de l'action.
+     * deplace le personnage en fonction de l'action et continue jusqu'a atterir devant un mur.
      * gere la collision avec les murs
      *
      * @param action une des actions possibles
@@ -146,7 +146,7 @@ public class Labyrinthe {
         // si c'est pas un mur, on effectue le deplacement
         if (!this.murs[suivante[0]][suivante[1]]) {
             // on met a jour personnage
-            return suivante;
+            return deplacerPerso(suivante[0], suivante[1], action);
         }
         return courante;
     }

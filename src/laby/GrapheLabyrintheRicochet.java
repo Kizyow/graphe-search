@@ -10,12 +10,12 @@ import java.util.List;
 /**
  * Classe adaptateur de la classe Labyrinthe afin d'en faire un graphe
  */
-public class GrapheLabyrinthe implements Graphe {
+public class GrapheLabyrintheRicochet implements Graphe {
 
     /**
      * Attribut représentant le labyrinthe et qui servira de donnée
      */
-    private Labyrinthe labyrinthe;
+    private LabyrintheRicochet labyrintheRicochet;
 
     /**
      * Constructeur du GrapheLabyrinthe qui va lire le labyrinthe sur un fichier
@@ -23,8 +23,8 @@ public class GrapheLabyrinthe implements Graphe {
      * @param nomFichier Le nom du fichier
      * @throws IOException Exception
      */
-    public GrapheLabyrinthe(String nomFichier) throws IOException {
-        this.labyrinthe = new Labyrinthe(nomFichier);
+    public GrapheLabyrintheRicochet(String nomFichier) throws IOException {
+        this.labyrintheRicochet = new LabyrintheRicochet(nomFichier);
     }
 
     /**
@@ -35,9 +35,9 @@ public class GrapheLabyrinthe implements Graphe {
     @Override
     public List<String> listeNoeuds() {
         List<String> casesLibre = new ArrayList<>();
-        for (int i = 0; i < labyrinthe.getLength(); i++) {
-            for (int j = 0; j < labyrinthe.getLengthY(); j++) {
-                if (!labyrinthe.getMur(i, j)) {
+        for (int i = 0; i < labyrintheRicochet.getLength(); i++) {
+            for (int j = 0; j < labyrintheRicochet.getLengthY(); j++) {
+                if (!labyrintheRicochet.getMur(i, j)) {
                     casesLibre.add(i + "," + j);
                 }
             }
@@ -61,10 +61,10 @@ public class GrapheLabyrinthe implements Graphe {
         int y = Integer.parseInt(noeudSplit[1]);
 
         List<int[]> suivants = new ArrayList<>();
-        suivants.add(labyrinthe.deplacerPerso(x, y, Labyrinthe.HAUT));
-        suivants.add(labyrinthe.deplacerPerso(x, y, Labyrinthe.BAS));
-        suivants.add(labyrinthe.deplacerPerso(x, y, Labyrinthe.GAUCHE));
-        suivants.add(labyrinthe.deplacerPerso(x, y, Labyrinthe.DROITE));
+        suivants.add(labyrintheRicochet.deplacerPerso(x, y, Labyrinthe.HAUT));
+        suivants.add(labyrintheRicochet.deplacerPerso(x, y, Labyrinthe.BAS));
+        suivants.add(labyrintheRicochet.deplacerPerso(x, y, Labyrinthe.GAUCHE));
+        suivants.add(labyrintheRicochet.deplacerPerso(x, y, Labyrinthe.DROITE));
 
         for (int[] dest : suivants) {
             String destString = dest[0] + "," + dest[1];
@@ -122,8 +122,8 @@ public class GrapheLabyrinthe implements Graphe {
      *
      * @return Labyrinthe
      */
-    public Labyrinthe getLabyrinthe() {
-        return labyrinthe;
+    public LabyrintheRicochet getLabyrintheRicochet() {
+        return labyrintheRicochet;
     }
 
 }

@@ -36,10 +36,10 @@ public class Dijkstra implements Algorithme {
      */
 
     /**
-     * algorithmes.Algorithme de algorithmes.Dijkstra
+     * Algorithme de Dijkstra
      *
-     * @param g      graphes.Graphe
-     * @param depart graphes.Noeud de départ
+     * @param g      Graphe
+     * @param depart Noeud de départ
      * @return Les valeurs
      */
     public Valeur resoudre(Graphe g, String depart) {
@@ -62,6 +62,7 @@ public class Dijkstra implements Algorithme {
 
         while (!liste.isEmpty()) {
 
+            // on recupere le noeud ayant la plus petite valeur de la liste des noeuds a traiter
             String petitNoeud = liste.get(0);
 
             for (String noeudNom : liste) {
@@ -70,6 +71,7 @@ public class Dijkstra implements Algorithme {
                 }
             }
 
+            // on retire le noeud de la liste des noeuds a traiter
             liste.remove(petitNoeud);
 
             List<Arc> listeArc = g.suivants(petitNoeud);
@@ -82,7 +84,7 @@ public class Dijkstra implements Algorithme {
                     valeur.setParent(arc.getDest(), petitNoeud);
                 }
 
-//                System.out.println("Dijsktra - graphes.Noeud " + petitNoeud + " -> : \n" + valeur);
+//                System.out.println("Dijsktra - Noeud " + petitNoeud + " (arc: " + arc.getDest() + ") -> : \n" + valeur);
 
             }
 

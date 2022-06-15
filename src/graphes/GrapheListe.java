@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Une classe graphes.GrapheListe permettant de représenter les données associé à un graphe
+ * Une classe GrapheListe permettant de représenter les données associé à un graphe
  */
 public class GrapheListe implements Graphe {
 
@@ -17,12 +17,12 @@ public class GrapheListe implements Graphe {
      */
     private List<String> ensNom;
     /**
-     * Attribut représentant la liste des graphes.Noeud
+     * Attribut représentant la liste des Noeud
      */
     private List<Noeud> ensNoeuds;
 
     /**
-     * Constructeur par défaut de graphes.GrapheListe
+     * Constructeur par défaut de GrapheListe
      */
     public GrapheListe() {
         this.ensNom = new ArrayList<>();
@@ -30,7 +30,7 @@ public class GrapheListe implements Graphe {
     }
 
     /**
-     * Constructeur de graphes.GrapheListe et chargement d'un graphe à partyir d'un fichier
+     * Constructeur de GrapheListe et chargement d'un graphe à partir d'un fichier
      *
      * @param nomFichier Le nom du fichier contenant le graphe
      * @throws IOException Une exception quand le fichier est mal lu
@@ -85,8 +85,6 @@ public class GrapheListe implements Graphe {
             }
         }
 
-
-
         // si le noeud de départ n'existe pas, le créer et l'ajouter au graphe
         if (noeudDep == null) {
             noeudDep = new Noeud(depart);
@@ -101,9 +99,9 @@ public class GrapheListe implements Graphe {
             ensNom.add(destination);
         }
 
-        //si l'arc existe deja, rien faire
-        for(Arc arc : suivants(depart)){
-            if(arc.getDest().equalsIgnoreCase(destination)){
+        //si l'arc entre le noeud de depart et de destination existe deja, ne rien faire
+        for (Arc arc : noeudDep.getAdj()) {
+            if (arc.getDest().equalsIgnoreCase(destination)) {
                 return;
             }
         }
@@ -184,6 +182,7 @@ public class GrapheListe implements Graphe {
 
     /**
      * Permet de générer un graphe aleatoirement avec n noeuds donnés
+     *
      * @param taille Le nombre de noeuds dans le graphe
      * @return GrapheListe
      */
@@ -192,16 +191,20 @@ public class GrapheListe implements Graphe {
         GrapheListe grapheListe = new GrapheListe();
         Random random = new Random();
 
+        // on créé tout les noeuds (de 1 à taille) et on les relies avec leur noeud suivant (n -> n+1)
+        // cela garantira qu'il existe au moins un chemin passant par tout les noeuds
         for (int i = 1; i < taille; i++) {
-            grapheListe.ajouterArc(String.valueOf(i), String.valueOf(i + 1), random.nextInt(100)+1);
+            grapheListe.ajouterArc(String.valueOf(i), String.valueOf(i + 1), random.nextInt(100) + 1);
         }
 
-        grapheListe.ajouterArc(String.valueOf(taille), "1", random.nextInt(100)+1);
+        // on relie le dernier noeud du graphe au premier noeud afin d'avoir une boucle
+        grapheListe.ajouterArc(String.valueOf(taille), "1", random.nextInt(100) + 1);
 
-        for(int i = 1; i <= taille; i++){
-            int dep = random.nextInt(taille)+1;
-            int dest = random.nextInt(taille)+1;
-            grapheListe.ajouterArc(String.valueOf(dep), String.valueOf(dest), random.nextInt(100)+1);
+        // on ajoute d'autres arcs aléatoirement dans le graphe pour plus de diversité
+        for (int i = 1; i <= taille; i++) {
+            int dep = random.nextInt(taille) + 1;
+            int dest = random.nextInt(taille) + 1;
+            grapheListe.ajouterArc(String.valueOf(dep), String.valueOf(dest), random.nextInt(100) + 1);
         }
 
         return grapheListe;

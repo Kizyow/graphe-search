@@ -88,10 +88,10 @@ public class Valeur {
     }
 
     /**
-     * Méthode de backtracking vers une destination donnée
+     * Méthode de backtracking depuis une destination donnée
      *
      * @param destination Le noeud de destination
-     * @return La liste des noeuds dans l'ordre
+     * @return La liste des noeuds dans l'ordre départ -> destination
      */
     public List<String> calculerChemin(String destination) {
         List<String> res = new ArrayList<>();

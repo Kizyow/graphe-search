@@ -1,7 +1,7 @@
 package graphes;
 
 /**
- * Une classe graphes.Arc permettant de représenter un arc dans un graphe
+ * Une classe Arc permettant de représenter un arc dans un graphe
  * partant d'un noeud vers un noeud destination avec un coût défini
  */
 public class Arc {
@@ -25,8 +25,8 @@ public class Arc {
         this.dest = noeudDest;
         this.cout = arcCout;
 
-        if (arcCout < 0) {
-            this.cout = 0;
+        if (arcCout < 1) {
+            this.cout = 1;
         }
 
     }

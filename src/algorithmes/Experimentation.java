@@ -8,44 +8,88 @@ public class Experimentation {
 
     public static void main(String[] args) throws IOException {
 
-//        graphes.GrapheListe graphe1 = new graphes.GrapheListe();
-//        graphe1.ajouterArc("A", "B", 20);
-//        graphe1.ajouterArc("A", "D", 3);
-//        graphe1.ajouterArc("D", "C", 4);
-//        graphe1.ajouterArc("C", "B", 2);
-//        graphe1.ajouterArc("B", "G", 10);
-//        graphe1.ajouterArc("G", "F", 5);
-//        graphe1.ajouterArc("F", "E", 3);
+//        // on crée un graphe boucle represente dans la figure 10
+//        GrapheListe grapheListe = new GrapheListe();
+//        grapheListe.ajouterArc("A", "B", 20);
+//        grapheListe.ajouterArc("A", "D", 3);
+//        grapheListe.ajouterArc("D", "C", 4);
+//        grapheListe.ajouterArc("C", "B", 2);
+//        grapheListe.ajouterArc("B", "G", 10);
+//        grapheListe.ajouterArc("G", "F", 5);
+//        grapheListe.ajouterArc("F", "E", 3);
 //
-//        algorithmes.BellmanFord bellmanFord = new algorithmes.BellmanFord();
-//        bellmanFord.resoudre(graphe1, "A");
-//        algorithmes.Dijkstra dijkstra = new algorithmes.Dijkstra();
-//        dijkstra.resoudre(graphe1, "A");
+//        // on cherche le chemin minimale avec l'algorithme de bellman-ford
+//        BellmanFord bellmanFord = new BellmanFord();
+//        bellmanFord.resoudre(grapheListe, "A");
+//
+//        // on cherche le chemin minimale avec l'algorithme de dijkstra
+//        Dijkstra dijkstra = new Dijkstra();
+//        dijkstra.resoudre(grapheListe, "A");
 
         /**
          *
-         * q 21:
+         * Q21:
          * Djikstra : verifie chaque arc de chaque noeud du graphe même si les chemins les plus courts sont trouvés
-         * algorithmes.BellmanFord : vérifie que entre chaque itération, les couts de chaque chemins sont identiques pour s'arrêter
+         * BellmanFord : vérifie que entre chaque itération, les couts de chaque chemins sont identiques pour s'arrêter
          *
-         * q22 :
+         * Q22 :
          * On remarque que l'algorithme de Dijsktra a plus d'itération que l'algorithme de point fixe pour ce graphe
          *
          */
 
-//        graphes.GrapheListe grapheListe = new graphes.GrapheListe("exemples/Graphe905.txt");
+//        // de 10 a 90
+//        for (int i = 1; i < 10; i++) {
 //
-//        long time = System.nanoTime();
-//        bellmanFord.resoudre(grapheListe, "1");
-//        time = System.nanoTime() - time;
+//            System.out.println("Graphe de taille " + i + "0");
 //
-//        System.out.println("Temps d'exécution de l'algorithme du point fixe: " + (time / 1e6) + "ms");
+//            GrapheListe grapheListe = new GrapheListe("exemples/Graphe" + i + "5.txt");
 //
-//        time = System.nanoTime();
-//        dijkstra.resoudre(grapheListe, "1");
-//        time = System.nanoTime() - time;
+//            // calcul du temps d'execution de l'algorithme du point fixe en nanosecondes
+//            BellmanFord bellmanFord = new BellmanFord();
+//            long time = System.nanoTime();
+//            bellmanFord.resoudre(grapheListe, "1");
+//            time = System.nanoTime() - time;
 //
-//        System.out.println("Temps d'exécution de l'algorithme de Dijsktra: " + (time / 1e6) + "ms");
+//            System.out.println("Temps d'exécution de l'algorithme du point fixe: " + (time / 1e6) + "ms");
+//
+//            // calcul du temps d'execution de l'algorithme de dijkstra en nanosecondes
+//            Dijkstra dijkstra = new Dijkstra();
+//            time = System.nanoTime();
+//            dijkstra.resoudre(grapheListe, "1");
+//            time = System.nanoTime() - time;
+//
+//            System.out.println("Temps d'exécution de l'algorithme de Dijsktra: " + (time / 1e6) + "ms");
+//
+//            System.out.println("=====================================================================================");
+//
+//        }
+
+//        // de 100 a 900
+//        for (int i = 10; i < 100; i+=10) {
+//
+//            System.out.println("Graphe de taille " + i + "0");
+//
+//            GrapheListe grapheListe = new GrapheListe("exemples/Graphe105.txt");
+//
+//            // calcul du temps d'execution de l'algorithme du point fixe en nanosecondes
+//            BellmanFord bellmanFord = new BellmanFord();
+//            long time = System.nanoTime();
+//            bellmanFord.resoudre(grapheListe, "1");
+//            time = System.nanoTime() - time;
+//
+//            System.out.println("Temps d'exécution de l'algorithme du point fixe: " + (time / 1e6) + "ms");
+//
+//            // calcul du temps d'execution de l'algorithme de dijkstra en nanosecondes
+//            Dijkstra dijkstra = new Dijkstra();
+//            time = System.nanoTime();
+//            dijkstra.resoudre(grapheListe, "1");
+//            time = System.nanoTime() - time;
+//
+//            System.out.println("Temps d'exécution de l'algorithme de Dijsktra: " + (time / 1e6) + "ms");
+//
+//            System.out.println("=====================================================================================");
+//
+//        }
 
         /**
          * q 23 : L'algo Djikstra est bien plus rapide que l'autre algo quand le graphe comporte beaucoup de noeuds
@@ -57,8 +101,8 @@ public class Experimentation {
          * en millisecondes
          */
 
-        int TAILLE_MAX = 1000;
-        int PAS = 100;
+        int TAILLE_MAX = 10000;
+        int PAS = 1000;
 
         int NB_ITERATION = TAILLE_MAX / PAS;
         long sommeBellman = 0;
